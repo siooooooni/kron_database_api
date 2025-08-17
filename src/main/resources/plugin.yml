@@ -1,0 +1,6 @@
+name: MarkDatabaseAPI
+version: 1.0
+main: org.game.Main
+api-version: 1.19
+authors: [GeminiCLI]
+description: API for Mark database integration.
