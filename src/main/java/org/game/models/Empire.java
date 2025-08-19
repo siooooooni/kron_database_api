@@ -2,12 +2,12 @@ package org.game.models;
 
 public class Empire {
     private String id;
-    private String imperialGuildId;
+    private String name;
     private String description;
 
-    public Empire(String id, String imperialGuildId, String description) {
+    public Empire(String id, String name, String description) {
         this.id = id;
-        this.imperialGuildId = imperialGuildId;
+        this.name = name;
         this.description = description;
     }
 
@@ -19,12 +19,12 @@ public class Empire {
         this.id = id;
     }
 
-    public String getImperialGuildId() {
-        return imperialGuildId;
+    public String getName() {
+        return name;
     }
 
-    public void setImperialGuildId(String imperialGuildId) {
-        this.imperialGuildId = imperialGuildId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

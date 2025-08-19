@@ -2,6 +2,8 @@ package org.game.models;
 
 public class User {
     private String id;
+    private String guildID;
+    private int guildPosition;
     private String name;
     private int kron;
     private int shilling;
@@ -13,6 +15,8 @@ public class User {
 
     public User(
             String id,
+            String guildID,
+            int guildPosition,
             String name,
             int kron,
             int shilling,
@@ -23,6 +27,8 @@ public class User {
             int accuracy
     ) {
         this.id = id;
+        this.guildID = guildID;
+        this.guildPosition = guildPosition;
         this.name = name;
         this.kron = kron;
         this.shilling = shilling;
@@ -39,6 +45,22 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getGuildID() {
+        return guildID;
+    }
+
+    public void setGuildID(String guildID) {
+        this.guildID = guildID;
+    }
+
+    public int getGuildPosition() {
+        return guildPosition;
+    }
+
+    public void setGuildPosition(int guildPosition) {
+        this.guildPosition = guildPosition;
     }
 
     public String getName() {

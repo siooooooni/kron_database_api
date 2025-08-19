@@ -1,6 +1,7 @@
-name: MarkDatabaseAPI
+name: KronDatabaseAPI
 version: 1.0
 main: org.game.Main
-api-version: 1.19
-authors: [GeminiCLI]
-description: API for Mark database integration.
+api-version: 1.21.8
+authors:
+  - sioooooni
+description: API for kron online game database integration.
