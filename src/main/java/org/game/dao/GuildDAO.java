@@ -53,20 +53,20 @@ public class GuildDAO {
                 result = rs.getInt("empire_position");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -173,10 +173,38 @@ public class GuildDAO {
 
     // - 특수
 
-    public List<List<String>> getAllUserIDNNameNPosition(String guildID) {
-        List<List<String>> result = null;
+    public List<String> getAllUserID(String guildID) {
+        List<String> result = new ArrayList<>();
 
-        String sql = "SELECT u.id, u.name, u.guild_position FROM user AS u INNER JOIN guild AS g ON u.guild_id = g.id WHERE g.id = ?";
+        String sql = "SELECT u.id FROM user AS u INNER JOIN guild AS g ON u.guild_id = g.id WHERE g.id = ? ORDER BY u.guild_position ASC";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, guildID);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result.add(
+                        rs.getString("id")
+                );
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+        }
+
+        return result;
+    }
+
+    public List<List<String>> getAllUserIDNNameNPosition(String guildID) {
+        List<List<String>> result = new ArrayList<>();
+
+        String sql = "SELECT u.id, u.name, u.guild_position FROM user AS u INNER JOIN guild AS g ON u.guild_id = g.id WHERE g.id = ? ORDER BY u.guild_position ASC";
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, guildID);
@@ -235,7 +263,7 @@ public class GuildDAO {
     }
 
     public List<List<String>> getAllManagerIDNName(String guildID) {
-        List<List<String>> result = null;
+        List<List<String>> result = new ArrayList<>();
 
         String sql = "SELECT u.id, u.name FROM user AS u WHERE u.guild_id = ? AND u.guild_position = 2;";
         try (Connection conn = DatabaseManager.getConnection();
@@ -264,7 +292,7 @@ public class GuildDAO {
     }
 
     public List<List<String>> getAllNobleIDNName(String guildID) {
-        List<List<String>> result = null;
+        List<List<String>> result = new ArrayList<>();
 
         String sql = "SELECT u.id, u.name FROM user AS u WHERE u.guild_id = ? AND u.guild_position = 3;";
         try (Connection conn = DatabaseManager.getConnection();
@@ -291,6 +319,124 @@ public class GuildDAO {
 
         return result;
     }
+
+    public List<String> getAllGuildID() {
+        List<String> result = new ArrayList<>();
+
+        String sql = "SELECT id FROM guild;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result.add(
+                        rs.getString("id")
+                );
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public int getGuildMemberCount(String guildID) {
+        int result = -1;
+
+        String sql = "SELECT COUNT(u.id) AS user_count FROM user AS u INNER JOIN guild AS g ON u.guild_id = g.id WHERE g.id = ?;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, guildID);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt("user_count");
+            }
+            else{
+                result = -2;
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        }
+
+        return result;
+    }
+
+    public String getGuildIDByName(String guildName) {
+        String result = null;
+
+        String sql = "SELECT id FROM guild WHERE name = ?;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, guildName);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getString("id");
+            }
+            else{
+                result = null;
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+            result = null;
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+            result = null;
+        }
+
+        return result;
+    }
+
+    public int isSameGuildName(String guildName) {
+        int result = -1;
+
+        String sql = "SELECT COUNT(*) AS same_guild_count FROM guild WHERE name = ?;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, guildName);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt("same_guild_count");
+            }
+            else{
+                result = -2;
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        }
+
+        return result;
+    }
     //endregion
 
     //region 수정하기 함수들
@@ -311,14 +457,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -340,14 +486,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -369,14 +515,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -398,14 +544,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -430,14 +576,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -469,14 +615,14 @@ public class GuildDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -485,26 +631,27 @@ public class GuildDAO {
     public int deleteGuild(String guildID) {
         int result = -1;
 
-        String sql = "DELETE FROM guild WHERE id = ?";
+        String sql = "UPDATE user SET guild_id = NULL, guild_position = 0 WHERE guild_id = ?;DELETE FROM guild WHERE id = ?;";
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, guildID);
+            pstmt.setString(2, guildID);
 
             pstmt.executeUpdate();
 
-            return result;
+            return 0;
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;

@@ -4,6 +4,7 @@ import org.game.database.DatabaseManager;
 import org.game.models.Empire;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpireDAO {
@@ -103,7 +104,7 @@ public class EmpireDAO {
     }
 
     public List<String> getVassalGuildIDs(String guildID) {
-        List<String> result = null;
+        List<String> result = new ArrayList<>();
 
         String sql = "SELECT g.id FROM guild AS g WHERE g.empire_id = ? AND g.empire_position = 2;";
         try (Connection conn = DatabaseManager.getConnection();
@@ -148,14 +149,14 @@ public class EmpireDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -177,14 +178,14 @@ public class EmpireDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -207,14 +208,14 @@ public class EmpireDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -240,14 +241,14 @@ public class EmpireDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -256,10 +257,11 @@ public class EmpireDAO {
     public int deleteEmpire(String id) {
         int result = -1;
 
-        String sql = "DELETE FROM empire WHERE id = ?";
+        String sql = "UPDATE guild SET empire_id = NULL, empire_position = 0 WHERE empire_id = ?;DELETE FROM empire WHERE id = ?;";
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, id);
+            pstmt.setString(2, id);
 
             pstmt.executeUpdate();
 
@@ -268,14 +270,14 @@ public class EmpireDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;

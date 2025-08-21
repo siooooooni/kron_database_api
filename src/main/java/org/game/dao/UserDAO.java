@@ -51,20 +51,20 @@ public class UserDAO {
                 result = rs.getInt("guild_position");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -113,20 +113,20 @@ public class UserDAO {
                 result = rs.getInt("kron");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -144,20 +144,20 @@ public class UserDAO {
                 result = rs.getInt("shilling");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -175,20 +175,20 @@ public class UserDAO {
                 result = rs.getInt("point");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -206,20 +206,20 @@ public class UserDAO {
                 result = rs.getInt("strength");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -237,20 +237,20 @@ public class UserDAO {
                 result = rs.getInt("agility");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -268,20 +268,20 @@ public class UserDAO {
                 result = rs.getInt("endurance");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -299,20 +299,20 @@ public class UserDAO {
                 result = rs.getInt("accuracy");
             }
             else{
-                result = 1;
+                result = -2;
             }
         } catch (SQLSyntaxErrorException e) {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -360,6 +360,68 @@ public class UserDAO {
 
         return result;
     }
+
+    public String getUserIDByName(String userName) {
+        String result = null;
+
+        String sql = "SELECT id FROM user WHERE name = ?;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userName);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getString("id");
+            }
+            else{
+                result = null;
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+            result = null;
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+            result = null;
+        }
+
+        return result;
+    }
+
+    public int isSameUserID(String userID) {
+        int result = -1;
+
+        String sql = "SELECT COUNT(*) AS same_user_count FROM user WHERE id = ?;";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt("same_user_count");
+            }
+            else{
+                result = -2;
+            }
+        } catch (SQLSyntaxErrorException e) {
+            System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        } catch (SQLException e) {
+            System.err.println("데이터베이스 오류가 발생했습니다.");
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Vendor Code: " + e.getErrorCode());
+            e.printStackTrace();
+
+            result = -1*e.getErrorCode();
+        }
+
+        return result;
+    }
     //endregion
 
     //region 수정하기 함수들
@@ -380,14 +442,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -409,14 +471,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -438,14 +500,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -467,14 +529,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -496,14 +558,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -525,14 +587,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -554,14 +616,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -583,14 +645,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -612,14 +674,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -650,14 +712,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -692,14 +754,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
@@ -720,14 +782,14 @@ public class UserDAO {
             System.err.println("SQL 쿼리 문법이 잘못되었습니다: " + e.getMessage());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         } catch (SQLException e) {
             System.err.println("데이터베이스 오류가 발생했습니다.");
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Vendor Code: " + e.getErrorCode());
             e.printStackTrace();
 
-            result = e.getErrorCode();
+            result = -1*e.getErrorCode();
         }
 
         return result;
